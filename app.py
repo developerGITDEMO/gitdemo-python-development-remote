@@ -18,6 +18,22 @@ def greeter():
 	flash("Hola " + str(request.form['name_input']) + " !")
 	return render_template("index.html")
 
+#Cálculo de edad
+@app.route("/bd")
+def age():
+	flash("¿Cuál es tu fecha de nacimiento?")
+	return render_template("ageindex.html")
+
+@app.route("/age", methods=['POST', 'GET'])
+def agecalc():
+	today = date.today()
+	bd = request.form['date_input']
+	birthday = datetime.strptime(bd, '%Y-%m-%d')
+	age = today.year - birthday.year
+	#age -= ((today.month, today.day) < (birthday.month, birthday.day))
+	flash("Tu edad es: " + str(age) + " años")
+	return render_template("ageindex.html")
+
 HOST = "localhost"
 PORT = 4000
 DEBUG = True
