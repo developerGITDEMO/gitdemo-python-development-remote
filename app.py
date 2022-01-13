@@ -34,6 +34,22 @@ def agecalc():
 	flash("Tu edad es: " + str(age) + " años")
 	return render_template("ageindex.html")
 
+#Suma de dos números
+@app.route("/sum")
+def sum():
+	flash("Ingrese los números a sumar")
+	return render_template("sumindex.html")
+
+@app.route("/sumresult", methods=['POST', 'GET'])
+def sumcalc():
+	num1 = request.form['n1_input']
+	num2 = request.form['n2_input']
+	intnum1 = int(num1)
+	intnum2 = int(num2)
+	sum = intnum1 + intnum2
+	flash("La suma de los dos números es: " + str(sum) + " .")
+	return render_template("sumindex.html")
+
 HOST = "localhost"
 PORT = 4000
 DEBUG = True
