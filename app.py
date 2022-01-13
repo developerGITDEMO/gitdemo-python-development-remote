@@ -7,7 +7,7 @@ from flask.wrappers import Request
 app = Flask(__name__)
 app.secret_key = "manbearpig_MUDMAN888"
 
-#Saludo
+#Saludo Hola
 @app.route("/")
 def index():
 	flash("¿Cuál es tu nombre?")
